@@ -1,4 +1,8 @@
 const fs = require('fs'); 
+const http = require('http');
+const url = require('url');
+/*
+-------------------FILES-----------------------------
 
 // Blocking Synchronous Way 
 
@@ -22,3 +26,27 @@ fs.readFile('./txt/start.txt','utf-8',(err,data1) => {
     });
 });
 console.log('Will read file');
+*/
+//---------------------------SERVER-----------------------------//
+const server = http.createServer((req,res) => {
+
+    const pathName = req.url;
+    if(pathName === '/' ||pathName === '/overview'){
+        res.end('This is the OVERVIEW');
+    }
+    else if(pathName === '/product'){
+        res.end('This is the Product');
+    }
+    else{
+        res.writeHead(404,{
+            'Content-type':'text/html'
+        });
+        res.end('<h1>Page not found!</h1>')
+    }
+});
+
+ server.listen(8000,'127.0.0.1',() => { //8000 is the port and 127.0.0.1 is the local host
+     console.log('Listening To Request on port 8000');
+ }); 
+
+//  Routing -- Routing Basically means implementing different actions for different URLs.

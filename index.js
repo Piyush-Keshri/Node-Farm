@@ -1,8 +1,8 @@
 const fs = require('fs'); 
 const http = require('http');
 const url = require('url');
-
-const replaceTemplate = require('./modules/replaceTemplate')
+const slugify = require('slugify');
+const replaceTemplate = require('./modules/replaceTemplate');
 
 /*
 -------------------FILES-----------------------------
@@ -30,6 +30,7 @@ fs.readFile('./txt/start.txt','utf-8',(err,data1) => {
 });
 console.log('Will read file');
 */
+
 //---------------------------SERVER-----------------------------//
 
 const tempOverview = fs.readFileSync(`${__dirname}/templates/template-overview.html`,'utf-8');
@@ -38,6 +39,11 @@ const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.htm
 
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`,'utf-8');
 const dataObj = JSON.parse(data); //dataObj is an array.
+
+const slugs = dataObj.map(el => slugify(el.productName,{lower: true}));
+console.log(slugs);
+
+console.log(slugify('Fresh Avocados',{lower: true}));
 
 const server = http.createServer((req,res) => {
 
@@ -80,3 +86,4 @@ const server = http.createServer((req,res) => {
  }); 
 
 //  Routing -- Routing Basically means implementing different actions for different URLs.
+//  Slug -- Slug is basically the last part of URL that contains a unique string that identifies the resource that the website is displaying.

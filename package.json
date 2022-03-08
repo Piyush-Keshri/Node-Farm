@@ -1,0 +1,25 @@
+{
+  "name": "node-farm",
+  "version": "1.0.0",
+  "description": "Learning node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Piyush-Keshri/Node-Farm.git"
+  },
+  "author": "Piyush_Keshri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Piyush-Keshri/Node-Farm/issues"
+  },
+  "homepage": "https://github.com/Piyush-Keshri/Node-Farm#readme",
+  "dependencies": {
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
